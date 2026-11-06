@@ -1,0 +1,44 @@
+# Parametros do sistema
+
+hardware:
+    motor:
+        pwm_pin: 12
+        dir_pin: 17
+        brake_pin: 27
+        frequency: 20000
+        max_voltage: 12.0
+
+    encoders:
+      arm:
+        pin_a: 9
+        pin_b: 25
+        ppr: 512
+
+      pendulum:
+        pin_a: 6
+        pin_b: 5
+        ppr: 512
+
+control:
+  dt: 0.005
+  volt_limit: 12.0
+  pd_externo:
+    kp: 40.0
+    kd: 2.0
+
+  pd_interno:
+    kp: 0.162
+    kd: 0.0356
+
+  angle_limit:
+      arm_max:  1.5708   # +90°
+      arm_min: -1.5708   # -90°
+
+agents:
+  dt: 0.02
+  phi_ref: 3.14159
+  sac_path: "agents/weights/sac_actor_swingup.onnx"
+  ppo_path: "agents/weights/ppo_actor_mode.onnx"
+
+simulation:
+  tf: 10.0
